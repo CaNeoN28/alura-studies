@@ -1,10 +1,10 @@
 import React from 'react';
-import logo from './logo.svg';
+import Botao from './components/Botao';
 
 function App() {
   return (
     <div className="App">
-      Hello World
+      <Botao></Botao>
     </div>
   );
 }

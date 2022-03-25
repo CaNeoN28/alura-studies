@@ -20,7 +20,7 @@ class Formulario extends React.Component<{setTarefas: React.Dispatch<React.SetSt
                 {
                     ...this.state,
                     selecionado: false,
-                    complentado: false,
+                    completado: false,
                     id: uuidv4()
                 }
             ]

@@ -2,28 +2,12 @@ import React, { useState } from 'react';
 import { addSyntheticLeadingComment } from 'typescript';
 import Item from './Item';
 import style from './Lista.module.scss';
+import { ITarefas } from '../../types/tarefas';
 
-function Lista(){
-    const [tarefas, setTarefas] = useState([
-        {
-            tarefa: 'Javascript',
-            tempo: '01:00:00'
-        },
-        {
-            tarefa: 'React',
-            tempo: '03:00:00'
-        },
-        {
-            tarefa: 'Typescript',
-            tempo: '02:00:00'
-        }
-    ])
-
+function Lista({tarefas}: {tarefas: ITarefas[]}){
     return(
         <aside className={style.listaTarefas}>
-            <h2 onClick={() => {
-                setTarefas([...tarefas, {tarefa: "Estudar estados", tempo: "05:00:00"}])
-            }}>Tarefas do dia</h2>
+            <h2>Tarefas do dia</h2>
             <ul>
                 {tarefas.map((item, index) => (
                     <Item

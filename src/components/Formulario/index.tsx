@@ -25,6 +25,8 @@ class Formulario extends React.Component<{setTarefas: React.Dispatch<React.SetSt
                 }
             ]
         );
+        this.state.tarefa = "";
+        this.state.tempo = "00:00"
     }
 
     render(){

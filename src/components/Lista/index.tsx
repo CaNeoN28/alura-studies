@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import { addSyntheticLeadingComment } from 'typescript';
 import Item from './Item';
 import style from './Lista.module.scss';
-import { ITarefas } from '../../types/tarefas';
+import { ITarefa } from '../../types/tarefas';
 
-function Lista({tarefas}: {tarefas: ITarefas[]}){
+function Lista({tarefas}: {tarefas: ITarefa[]}){
     return(
         <aside className={style.listaTarefas}>
             <h2>Tarefas do dia</h2>

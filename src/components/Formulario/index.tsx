@@ -1,9 +1,11 @@
 import React from 'react';
-import { ITarefas } from '../../types/tarefas';
+import { ITarefa } from '../../types/tarefas';
 import Botao from '../Botao';
 import style from './Formulario.module.scss';
+import {v4 as uuidv4} from 'uuid';
+import { randomUUID } from 'crypto';
 
-class Formulario extends React.Component<{setTarefas: React.Dispatch<React.SetStateAction<ITarefas[]>>}>{
+class Formulario extends React.Component<{setTarefas: React.Dispatch<React.SetStateAction<ITarefa[]>>}>{
 
     state = {
         tarefa: "" ,
@@ -12,8 +14,17 @@ class Formulario extends React.Component<{setTarefas: React.Dispatch<React.SetSt
 
     adicionarTarefa(evento: React.FormEvent) {
         evento.preventDefault();
-        this.props.setTarefas(tarefasAntigas => [...tarefasAntigas, {...this.state}]);
-        console.log(this.state)
+        this.props.setTarefas(tarefasAntigas => 
+            [
+                ...tarefasAntigas, 
+                {
+                    ...this.state,
+                    selecionado: false,
+                    complentado: false,
+                    id: uuidv4()
+                }
+            ]
+        );
     }
 
     render(){

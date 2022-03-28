@@ -17,14 +17,22 @@ export default function Cronometro({selecionado}: Props){
         }
     }, [selecionado]);
 
+    function regressiva(contador : number = 0){
+        setTimeout(() => {
+            if (contador>0){
+                setTempo(contador - 1);
+                regressiva(contador - 1)
+            }
+        }, 1000)   
+    }
+
     return(
         <div className={style.cronometro}>
-            <p className={style.titulo}>Escolha uma tarefa e comece os estudos</p>
-            <div>Tempo: {tempo || 0}</div>
+            <p className={style.titulo}>Escolha uma tarefa e comece os estudos</p> 
             <div className={style.relogioWrapper}>
                 <Relogio tempo={tempo}/>
             </div>
-            <Botao>
+            <Botao onClick = {() => regressiva(tempo)} >
                 Começar
             </Botao>
         </div>

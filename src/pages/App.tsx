@@ -7,10 +7,10 @@ import style from './App.module.scss';
 
 function App() {
   const [tarefas, setTarefas] = useState<ITarefa[] | []>([])
-  const [tarefaSelecionada,  setSelecionada] = useState<ITarefa>();
+  const [selecionado,  setSelecionado] = useState<ITarefa>();
 
   function selecionarTarefa(tarefaSelecionada: ITarefa){
-    setSelecionada(tarefaSelecionada)
+    setSelecionado(tarefaSelecionada)
     setTarefas(tarefasAntigas => tarefasAntigas.map(tarefa => ({
       ...tarefa,
       selecionado : tarefa.id === tarefaSelecionada.id ? true : false
@@ -23,7 +23,7 @@ function App() {
       <Lista 
         tarefas={tarefas}
         selecionarTarefa={selecionarTarefa}/>
-      <Cronometro/>
+      <Cronometro selecionado={selecionado}/>
     </div>
   );
 }

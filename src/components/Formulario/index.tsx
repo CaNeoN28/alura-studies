@@ -5,20 +5,23 @@ import style from './Formulario.module.scss';
 import {v4 as uuidv4} from 'uuid';
 import { randomUUID } from 'crypto';
 
-class Formulario extends React.Component<{setTarefas: React.Dispatch<React.SetStateAction<ITarefa[]>>}>{
+interface Props{
+    setTarefas: React.Dispatch<React.SetStateAction<ITarefa[]>>
+}
 
-    state = {
-        tarefa: "" ,
-        tempo: "00:00:00"
-    }
+function Formulario({setTarefas}: Props){
 
-    adicionarTarefa(evento: React.FormEvent) {
+    const [tarefa, setTarefa] = "";
+    const [tempo, setTempo] = "00:00";
+
+    function adicionarTarefa(evento: React.FormEvent) {
         evento.preventDefault();
-        this.props.setTarefas(tarefasAntigas => 
+        setTarefas(tarefasAntigas => 
             [
                 ...tarefasAntigas, 
                 {
-                    ...this.state,
+                    tarefa,
+                    tempo,
                     selecionado: false,
                     completado: false,
                     id: uuidv4()
@@ -27,16 +30,15 @@ class Formulario extends React.Component<{setTarefas: React.Dispatch<React.SetSt
         );
     }
 
-    render(){
-        return(
-            <form  className={style.novaTarefa} onSubmit={this.adicionarTarefa.bind(this)}>
+    return(
+        <form  className={style.novaTarefa} onSubmit={adicionarTarefa}>
                 <div className={style.inputContainer}>
                     <label htmlFor="tarefa">
                          Adicione um novo estudo
                     </label>
                     <input
-                        value={this.state.tarefa}
-                        onChange={(evento => this.setState({...this.state, tarefa: evento.target.value}))}
+                        value={tarefa}
+                        onChange={(evento => evento.target.value)}
                         type="text" 
                         name="tarefa" 
                         id="tarefa" 
@@ -49,8 +51,8 @@ class Formulario extends React.Component<{setTarefas: React.Dispatch<React.SetSt
                         Tempo: 
                     </label>
                     <input 
-                        value={this.state.tempo}
-                        onChange={(evento => this.setState({...this.state, tempo: evento.target.value}))}
+                        value={tempo}
+                        onChange={(evento => evento.target.value)}
                         type="time" 
                         name='tempo' 
                         id='tempo' 
@@ -64,8 +66,7 @@ class Formulario extends React.Component<{setTarefas: React.Dispatch<React.SetSt
                     Adicionar
                 </Botao>
             </form>
-        );
-    }
+    )
 }
 
 export default Formulario;

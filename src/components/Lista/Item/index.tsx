@@ -1,3 +1,4 @@
+import { spawn } from 'child_process';
 import { ITarefa } from '../../../types/tarefas';
 import style from './Item.module.scss';
 
@@ -29,6 +30,7 @@ export default function Item({
 
             <h3>{tarefa}</h3>
             <span>{tempo}</span>
+            {completado && <span className={style.concluido} aria-label="tarefa completada"></span>}
         </li>
     )
 }

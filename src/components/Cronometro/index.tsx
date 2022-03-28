@@ -20,9 +20,9 @@ export default function Cronometro({selecionado, finalizarTarefa}: Props){
 
     function regressiva(contador : number = 0){
         setTimeout(() => {
-            if (contador>0){
+            if (contador > 0){
                 setTempo(contador - 1);
-                regressiva(contador - 1);
+                return regressiva(contador - 1);
             }
             finalizarTarefa();
         }, 1000)   

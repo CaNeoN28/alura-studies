@@ -6,8 +6,8 @@ import { useEffect, useState } from "react";
 import { ITarefa } from "../../types/tarefas";
 
 interface Props{
-    selecionado: ITarefa | undefined;
-    finalizarTarefa: () => void;
+    selecionado: ITarefa | undefined,
+    finalizarTarefa: () => void,
 }
 
 export default function Cronometro({selecionado, finalizarTarefa}: Props){ 
